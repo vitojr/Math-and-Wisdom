@@ -1,0 +1,66 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<meta charset=utf-8 /> 
+<title>Change the content of a cell</title> 
+<style type="text/css"> 
+body {margin: 30px;} 
+</style>  
+</head><body> 
+<table id="myTable" border="1"> 
+<tr><td> </td> <td> </td> <td> </td> <td> </td></tr>
+<tr><td> </td> <td> </td> <td> </td> <td> </td></tr> 
+<tr><td> </td> <td> </td> <td> </td> <td> </td></tr>
+<tr><td> </td> <td> </td> <td> </td> <td> </td></tr> 
+</table><form> 
+<!--<input type="button" onclick="changeContent()" value="Change content">-->
+
+<script><!-- Fill Table -->
+A=1; B=2; C=3; D=4; E=5; F=6; G=7; H=8; I=9; J=10; K=11; L=12; M=13; N=14; O=15; P=16;
+rn = 0; cn = 0; content = A;
+var x=document.getElementById('myTable').rows[parseInt(rn,10)].cells; x[parseInt(cn,10)].innerHTML=content;
+cn = 1; content = B;
+var x=document.getElementById('myTable').rows[parseInt(rn,10)].cells; x[parseInt(cn,10)].innerHTML=content;
+cn = 2; content = C;
+var x=document.getElementById('myTable').rows[parseInt(rn,10)].cells; x[parseInt(cn,10)].innerHTML=content;
+cn = 3; content = D;
+var x=document.getElementById('myTable').rows[parseInt(rn,10)].cells; x[parseInt(cn,10)].innerHTML=content;
+rn=1, cn = 0; content = E;
+var x=document.getElementById('myTable').rows[parseInt(rn,10)].cells; x[parseInt(cn,10)].innerHTML=content;
+cn = 1; content = F;
+var x=document.getElementById('myTable').rows[parseInt(rn,10)].cells; x[parseInt(cn,10)].innerHTML=content;
+cn = 2; content = G;
+var x=document.getElementById('myTable').rows[parseInt(rn,10)].cells; x[parseInt(cn,10)].innerHTML=content;
+cn = 3; content = H;
+var x=document.getElementById('myTable').rows[parseInt(rn,10)].cells; x[parseInt(cn,10)].innerHTML=content;
+rn=2; cn = 0; content = I;
+var x=document.getElementById('myTable').rows[parseInt(rn,10)].cells; x[parseInt(cn,10)].innerHTML=content;
+cn = 1; content = J;
+var x=document.getElementById('myTable').rows[parseInt(rn,10)].cells; x[parseInt(cn,10)].innerHTML=content;
+cn = 2; content = K;
+var x=document.getElementById('myTable').rows[parseInt(rn,10)].cells; x[parseInt(cn,10)].innerHTML=content;
+cn = 3; content = L;
+var x=document.getElementById('myTable').rows[parseInt(rn,10)].cells; x[parseInt(cn,10)].innerHTML=content;
+rn = 3; cn = 0; content = M;
+var x=document.getElementById('myTable').rows[parseInt(rn,10)].cells; x[parseInt(cn,10)].innerHTML=content;
+cn = 1; content = N;
+var x=document.getElementById('myTable').rows[parseInt(rn,10)].cells; x[parseInt(cn,10)].innerHTML=content;
+cn = 2; content = O;
+var x=document.getElementById('myTable').rows[parseInt(rn,10)].cells; x[parseInt(cn,10)].innerHTML=content;
+cn = 3; content = P;
+var x=document.getElementById('myTable').rows[parseInt(rn,10)].cells; x[parseInt(cn,10)].innerHTML=content;
+</script>
+ 
+</form></body></html>
+
+<!--<script>
+function changeContent()
+{
+//rn = window.prompt("Input the Row number(0,1,2)", "0");
+//cn = window.prompt("Input the Column number(0,1)","0");
+//content = window.prompt("Input the Cell content"); 
+rn = 0; cn = 0; content = "Vito";
+var x=document.getElementById('myTable').rows[parseInt(rn,10)].cells;
+x[parseInt(cn,10)].innerHTML=content;
+}
+</script>-->

@@ -1,0 +1,303 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<!--<meta charset=utf-8 /> -->
+<script src="https://unpkg.com/mathjs@9.4.4/lib/browser/math.js"></script>
+<style>
+<!-- Position Click Boxes -->
+div.Square {position: fixed; font-size:20px; left:70px; width:200px, height: 20px; top:55px;} 
+div.Next1 {position: fixed; font-size:24px; left:45px; width:200px, height: 20px; top:360px;}
+div.Scan {position: fixed; font-size:24px; left:127px; width:200px, height: 20px; top:360px;}
+div.Enter {position: fixed; font-size:24px; left:205px; width:200px, height: 20px; top:360px;} 
+div.About {position: fixed; font-size:24px; left:110px; width:200px, height: 20px; top:10px;}
+div.URL {position: fixed; font-size:24px; left:10px; width:300px, height: 20px; top:10px;} 
+<!-- Position Text -->
+<!--div.title {position: fixed; top: 500px; left: 550px; width: 400px; <!-- border: 0px solid #73AD21; -->}-->
+div.note {position: fixed; top: 50px; left: 390px; width: 600px;}
+div.cnt {position: fixed; top: 73px; left: 110px; width: 300px;}
+</style>  
+</head>
+<body>
+
+<!--<div class="title"><h3>4x4 Magic Squares</h3></div>-->
+<div class="cnt"<h4>Square # = <span id="cnt"></span></h4></div>
+<div class="note"> (In addition to all rows, columns, and diagonals, the following pictures <br> 
+                   outlined in blue show other collections of 4 numbers that add up to 34)</div>				   
+<!-- ************************************** Buttons ********************************************** 
+<div class="URL"><button onclick="document.location='Contact.html'">URL/Contact</button> </div> -->
+<div class="About"><button onclick="document.location='About.html'">About</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4x4 Magic Squares</div>
+<div class="Next1"><button onclick="nxtsq()">Next</p>Square</button> </div>
+<div class="Scan"><button onmousedown="OnButtonDown (this)" onmouseup="OnButtonUp (this)">Scan</p>(Hold)</button> </div>
+<div class="Enter"><button onclick="Enter()">Enter</p>1-16</button> </div>
+<!--<div class="Square">Square# =</div>-->
+<!--<h4>Square# = <span id="cnt"></span></h4>-->
+ <p id="4x4"></p>
+<!-- ************************************ 4x4 Table ******************************************* -->
+<table id="myTable" border="1" style="margin-top:100px; margin-left:50px;" style="width:20%">
+<tbody style="font-size: 40px;"><!-- text size -->
+<tr><td style="text-align:center"</td> <td style="text-align:center"</td> 
+<td style="text-align:center"</td> <<td style="text-align:center"</td></tr>
+<tr><td style="text-align:center"</td> <td style="text-align:center"</td> 
+<td style="text-align:center"</td> <<td style="text-align:center"</td></tr>
+<tr><td style="text-align:center"</td> <td style="text-align:center"</td> 
+<td style="text-align:center"</td> <<td style="text-align:center"</td></tr>
+<tr><td style="text-align:center"</td> <td style="text-align:center"</td> 
+<td style="text-align:center"</td> <<td style="text-align:center"</td></tr> 
+</table> 
+
+<!-- *************************************** Image Area ************************************** -->
+<div id="bd1" class="Images"> 
+<!-- Row 1 -->
+</span><span style="left: 380px; top: 15%; position: absolute;">
+<img src="1-1.jpg" id="1-1" border="1" height="100" width="100"></span></p>
+</span><span style="left: 580px; top: 15%; position: absolute;">
+<img src="1-2.jpg" id="1-2" border="1" height="100" width="100"></span></p>
+</span><span style="left: 780px; top: 15%; position: absolute;">
+<img src="1-3.jpg" id="1-3" border="1" height="100" width="100"></span></p>
+<!-- Row 2 -->
+</span><span style="left: 380px; top: 35%; position: absolute;">
+<img src="2-1.jpg" id="2-1" border="1" height="100" width="100""></span></p>
+</span><span style="left: 580px; top: 35%; position: absolute;">
+<img src="2-2.jpg" id="2-2" border="1" height="100" width="100""></span></p>
+</span><span style="left: 780px; top: 35%; position: absolute;">
+<img src="2-3.jpg" id="2-3" border="1" height="100" width="100""></span></p>
+<!-- Row 3 -->
+</span><span style="left: 380px; top: 55%; position: absolute;">
+<img src="3-1.jpg" id="3-1" border="1" height="100" width="100""></span></p>
+</span><span style="left: 580px; top: 55%; position: absolute;">
+<img src="3-2.jpg" id="3-2" border="1" height="100" width="100""></span></p>
+</span><span style="left: 780px; top: 55%; position: absolute;">
+<img src="3-3.jpg" id="3-3" border="1" height="100" width="100""></span></p>
+<!-- Row 4 -->
+</span><span style="left: 380px; top: 75%; position: absolute;">
+<img src="4-1.jpg" id="4-1" border="1" height="100" width="100""></span></p>
+</span><span style="left: 580px; top: 75%; position: absolute;">
+<img src="4-2.jpg" id="4-2" border="1" height="100" width="100""></span></p>
+</span><span style="left: 780px; top: 75%; position: absolute;">
+<img src="4-3.jpg" id="4-3" border="1" height="100" width="100""></span></p>
+</div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label id="DE">Determinant = </label>
+<input type="text" id="det" value="" style="border:hidden; height:12px; width:5%; font-size: 12pt">
+</body>
+<body onload="init()"></body><!-- Initialize Appearance -->
+<script>
+// *************************************** 4x4 Calc Engine ************************************
+// Stats - 400 MSs with 1 in the upper left corner   Factorial(16) = 20922789888000
+// 400x100/Factorial(16) = 0.00000000191179093295%
+var nxt, scn, AA, A, B, C, D, E, F, G ,H, I, J, K, L, M, N, O, P, x, cnt, out, del, con=[], a=[], tmp;
+A=1; B=0; cnt=0; x = "incB"; nxt=1; scn=1; fourx4(); first3();
+
+function init(){}
+
+function first3(){var boy = document.getElementById("1-1"); boy.style.border = "4px solid blue";
+                  var boy = document.getElementById("1-2"); boy.style.border = "4px solid blue";
+			var boy = document.getElementById("1-3"); boy.style.border = "4px solid blue";}
+//-- Row 2 --				  
+function Im21R(){var boy = document.getElementById("2-1"); boy.style.border = "4px solid blue";}
+function Im21B(){var boy = document.getElementById("2-1"); boy.style.border = "1px solid black";}
+function Im22R(){var boy = document.getElementById("2-2"); boy.style.border = "4px solid blue";}
+function Im22B(){var boy = document.getElementById("2-2"); boy.style.border = "1px solid black";}
+function Im23R(){var boy = document.getElementById("2-3"); boy.style.border = "4px solid blue";}
+function Im23B(){var boy = document.getElementById("2-3"); boy.style.border = "1px solid black";}
+<!-- Row 3 -->				  
+function Im31R(){var boy = document.getElementById("3-1"); boy.style.border = "4px solid blue";}
+function Im31B(){var boy = document.getElementById("3-1"); boy.style.border = "1px solid black";}
+function Im32R(){var boy = document.getElementById("3-2"); boy.style.border = "4px solid blue";}
+function Im32B(){var boy = document.getElementById("3-2"); boy.style.border = "1px solid black";}
+function Im33R(){var boy = document.getElementById("3-3"); boy.style.border = "4px solid blue";}
+function Im33B(){var boy = document.getElementById("3-3"); boy.style.border = "1px solid black";}
+//-- Row 4 --				  
+function Im41R(){var boy = document.getElementById("4-1"); boy.style.border = "4px solid blue";}
+function Im41B(){var boy = document.getElementById("4-1"); boy.style.border = "1px solid black";}
+function Im42R(){var boy = document.getElementById("4-2"); boy.style.border = "4px solid blue";}
+function Im42B(){var boy = document.getElementById("4-2"); boy.style.border = "1px solid black";}
+function Im43R(){var boy = document.getElementById("4-3"); boy.style.border = "4px solid blue";}
+function Im43B(){var boy = document.getElementById("4-3"); boy.style.border = "1px solid black";}
+
+function SelectIm(){
+if(A+B+E+F == 34){Im21R();} else {Im21B();}
+if(B+E+L+O == 34){Im22R();} else {Im22B();}
+if(C+H+I+N == 34){Im23R();} else {Im23B();}
+if(A+H+K+N == 34){Im31R();} else {Im31B();}
+if(C+F+I+P == 34){Im32R();} else {Im32B();}
+if(D+E+J+O == 34){Im33R();} else {Im33B();}
+if(B+G+L+M == 34){Im41R();} else {Im41B();}
+if(B+C+E+H == 34){Im42R();} else {Im42B();}
+if(A+F+J+M == 34){Im43R();} else {Im43B();}}
+
+function Reset(){A=1; B=0; cnt=0; nxt=1; scn=1; fourx4();} // Reset button
+function Reset2(){B=0; cnt=0; nxt=1; scn=1; fourx4();}
+function Reset3(){var A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P;Reset();}
+function OnButtonDown (button){myVar = setInterval(nxtsq,50);}
+function OnButtonUp (button){scn=0; nxt=0; clearInterval(myVar);}
+function nxtsq(){scn=1; nxt=1; fourx4();} // next button
+function Enter(){AA = parseInt(prompt('Enter in upper left corner cell with 1 thru 16', "1"),10); 
+				A=AA; if(A<1||A>16){Enter()} else {Reset2();}}				
+function endmess(){alert("Reached last square with " + A + " in upper left corner cell, Total Squares = " + cnt); OnButtonUp();}  
+				
+function fourx4() { if(Number.isNaN(A)){Reset3();}
+start:
+   while(nxt==1)
+    {if(B>16){endmess(); break start;} // Program stops here after all squares are shown
+    if(scn==0){break start;} 
+   switch(x){  
+case "incB": B=B+1;
+      if(B<17 && B==A){x="incB"; continue start;} //goto incB
+	  if(B<1){x="incB"; continue start;} //goto incB, B cannot be zero
+//	  document.getElementById("4x4").innerHTML = A+"_"+B+"_"+C+"_"+D; //testline
+      C=0; x="incC"; continue start;  
+
+case "incC": C=C+1;
+      if(C==17){x="incB"; continue start;} //goto incB
+	  if(B<1){x="incB"; continue start;} //goto incB, B cannot be zero	  
+      if(C==A||C==B){x="incC"; continue start;} //goto incC
+      D=34-A-B-C; 
+//	  document.getElementById("4x4").innerHTML = A+"_"+B+"_"+C+"_"+D; //testline	  
+      if(D<1||D>16||D==A||D==B||D==C){x="incC"; continue start;} //goto incC
+      E=0; x="incE"; continue start; //goto incE
+      
+case "incE": E=E+1;
+      if(E==17) {x="incC"; continue start;} //goto incC
+      if(E==A||E==B||E==C||E==D){x="incE"; continue start;} //goto incE	  
+      I=0; {x="inci"; continue start;};   
+
+case "inci": I=I+1;
+      if(I==17) {x="incE"; continue start;} //goto incE
+      if(I==A||I==B||I==C||I==D||I==E){x="inci"; continue start;} //goto inci	  
+      M=34-A-I-E; 
+
+      if(M<1||M>16) {x="inci"; continue start;} //goto inci
+      if(M==A||M==B||M==C||M==D||M==E||M==I){x="inci"; continue start;} //goto inci
+      P=34-A-M-D;
+
+      if(P<1||P>16) {x="inci"; continue start;} //goto inci
+      if(P==A||P==B||P==C||P==D||P==E||P==I||P==M){x="inci"; continue start;} //goto inci
+      F=0; x="incF"; continue start; //goto incF 
+
+case "incF": F=F+1;
+      if(F==17) {x="inci"; continue start;} //goto incI
+      if(F==A||F==B||F==C||F==D||F==E||F==I||F==M||F==P){x="incF"; continue start;} //goto incF  
+      K=34-A-F-P;
+
+      if(K<1||K>16) {x="incF"; continue start;} //goto incF
+      if(K==A||K==B||K==C||K==D||K==E||K==I||K==M||K==P||K==F){x="incF"; continue start;} //goto incF
+     // console.log(A, B, C, D);
+      J=0; {x="incJ"; continue start;} //goto incJ
+
+case "incJ": J=J+1
+      if(J==17) {x="incF"; continue start;}
+      if(J==A||J==B||J==C||J==D||J==E||J==I||J==M||J==P||J==F||J==K){x="incJ"; continue start;} //goto incJ
+      G=34-D-J-M;
+
+      if(G<1||G>16||G==A||G==B||G==C||G==D||G==E||G==I||G==H||G==P||G==F||G==K||G==J){x="incJ"; continue start;} //goto incJ
+      if(J==17) {x="incF"; continue start;} //goto incF
+      H=34-G-F-E;
+
+      if(H<1||H>16){x="incJ"; continue start;} //goto incJ
+      if(H==A||H==B||H==C||H==D||H==E||H==I||H==M||H==P||H==F||H==K||H==J||H==G){x="incJ"; continue start;} //goto incJ
+      if(J==17) {x="incF"; continue start;} //goto incF
+      L=34-K-J-I;
+  
+      if(L<1||L>16){x="incJ"; continue start;} //goto incJ
+      if(L==A||L==B||L==C||L==D||L==E||L==I||L==M||L==P||L==F||L==K||L==J||L==G||L==H){x="incJ"; continue start;} //goto incJ
+      if(J==17) {x="incF"; continue start;} //goto incF
+      N=34-B-F-J;
+
+      if(N<1||N>16){x="incJ"; continue start;} //goto incJ
+      if(N==A||N==B||N==C||N==D||N==E||N==I||N==M||N==P||N==F||N==K||N==J||N==G||N==H||N==L){x="incJ"; continue start;} //goto incJ
+      if(J==17) {x="incF"; continue start;} //goto incF
+      O=34-C-G-K;
+
+      if(O<1||O>16){x="incJ"; continue start;} //goto incJ
+      if(O==A||O==B||O==C||O==D||O==E||O==I||O==M||O==P||O==F||O==K||O==J||O==G||O==H||O==L||O==N){x="incJ"; continue start;} //goto incJ
+      if(J==17) {x="incF"; continue start;} //goto incF
+      printit(); SelectIm(); cnt = cnt +1; nxt = 0;
+	document.getElementById("cnt").innerHTML = cnt; } } }// print cnt to screen
+	  
+	  function printit()
+   { //-- Fill Table --
+      rn = 0; cn = 0; content = A; fillit();
+      cn = 1; content = B; fillit();
+      cn = 2; content = C; fillit();
+      cn = 3; content = D; fillit();
+      rn = 1; cn = 0; content = E; fillit();
+      cn = 1; content = F; fillit();
+      cn = 2; content = G; fillit();
+      cn = 3; content = H; fillit();
+      rn = 2; cn = 0; content = I; fillit();
+      cn = 1; content = J; fillit();
+      cn = 2; content = K; fillit();
+      cn = 3; content = L; fillit();
+      rn = 3; cn = 0; content = M; fillit();
+      cn = 1; content = N; fillit();
+      cn = 2; content = O; fillit();
+      cn = 3; content = P; fillit();
+      con[1] =  A.toString() + "," + B.toString() + "," + C.toString() + "," + D.toString();
+      con[2] =  E.toString() + "," + F.toString() + "," + G.toString() + "," + H.toString();
+      con[3] =  I.toString() + "," + J.toString() + "," + K.toString() + "," + L.toString();
+      con[4] =  M.toString() + "," + N.toString() + "," + O.toString() + "," + P.toString(); 
+      det(); return
+    }	  
+
+	function fillit()
+    { var x=document.getElementById('myTable').rows[parseInt(rn,10)].cells; 
+      x[parseInt(cn,10)].innerHTML=content;}
+      
+function det() // Determinant calc
+{var a=[], d, i, n; 
+n = 4; // n = # of rows & cols of nxn matrix
+for (i = 1; i <= n; i++){if(right(con[i],1)==","){con[i]=left(con[i], con[i].length-1)}; }
+for (i = 0; i < n; i++) {a[i] = "[" + con[i+1] + "]";} //console.log("a[0] = " +a[0], "a[1] = " +a[1], "a[2] = " + a[2]); 
+d = JSON.parse("[" + a + "]"); // convert to Javascript array
+out = math.det(d).toString(); out = clean(out);
+document.getElementById("det").value = out;}
+
+//document.getElementById("det").value = out; return;} 
+function left(e1, n) {return e1.substring(0, n);} // End of left
+function right(e1, n) {return e1.substring(e1.length-n);} // End of right
+//function instr(n, e1, sB) {e1=right(e1,e1.length-n+1); tmp=e1.indexOf(sB);}
+
+function clean(m) //i = m.indexOf(string) ~ i = instr(1, m, string)
+{m = m.replaceAll(",  0i", ""); m = m.replaceAll("+-", "-");
+//i=instr(1, m, ",  0i"); if(i>0){m = left(m, i-1);}
+if(Math.abs(m)<1e-11){m = "0";}; 
+i = m.indexOf("0z"); if(i>0){m = left(m, i-2) + right(m, m.length-i-1);}
+//i=instr(1, m, "0z"); if(i>0){m = left(m, i-2) + right(m, m.length-i-1);}
+i = m.indexOf("0000000000"); if(i>0){m = left(m, i-1);
+//i=instr(1, m, "0000000000"); if(i>0){m = left(m, i-1);
+i=right(m, 1); if(i=="."){m = left(m, m.length-1);} }
+i = m.indexOf("9999999999"); if(i>0){m = left(m, i-1);
+//i=instr(1, m, "9999999999"); if(i>0){m = left(m, i-1);
+if(right(m, 1)=="."){m = left(m, m.length-1);} 
+var tmp = parseInt(right(m, 1)); tmp = tmp + 1; m = left(m, m.length-1) + tmp.toString();}
+return m;} 
+
+function test()
+{var e, f, num = 0, Nxt = 0;
+start:;
+for(a=1; a<7; a++){
+for(b=1; b<7; b++){if(b==a || b==e || b==f){b = b + 1;} }
+if(b > 6){b = b - 1;}
+for(e = 1; e<7; e++){if(e==a || e==b || e==f){e = e + 1;} }
+if(e==a || e==b){e = e + 1;} 
+for(f = 1; f<7; f++){if(f==a || f==b || f==e){f = f + 1;} } 
+if(f==a || f==b || f==e){f = f + 1;} if(f==a || f==b || f==e){f = f + 1;} 
+//If e > 6 Then GoTo skipprint
+//If f > 6 Then GoTo skipprint
+while(e < 7 && f < 7) {while(a < 6 && b < 6)
+{c = 24 - a - b; o = f + a + b - 16; n = 26 - f - b; i = 27 - a - e; l = f + a + e - 18; h = 25 - f - e; p = 17 - a; k = 17 - f;
+num = num + 1;
+//Call printout
+console.log (num, a, b, e, f);} } } 
+//if(num > 190){GoTo Endsub;}
+//skipprint:
+//Next f
+//Next e
+//Next b
+//Next a
+Endsub:;}
+
+	  
+</script>
+</form></body></html>
+

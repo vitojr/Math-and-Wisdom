@@ -1,0 +1,114 @@
+
+Works
+var x; x="a"; 
+start:
+while(true)
+{
+switch (x) {
+  case "a":
+    console.log ("case a");
+    x = "d";
+    continue start;
+  case "b":
+    console.log ("case b");
+    break start;
+  case "c":
+    console.log ("case c");
+    break start;  
+  case "d":
+   console.log ("case d");
+   break start;
+}
+  }
+---------------------------------------------------------------------------------------------
+var Nxt, A, B, C, D, E, F, G ,H, I, J, K, L, M, N, O, P, x, cnt;
+A=1; B=0; cnt=0; 
+x = "incB"  
+start:
+   while(true)
+   {if(B>16){break start;} // Program stops here
+   switch(x){  
+case "incB": B=B+1;
+      if(B<17 && B==A){x="incB"; continue start;} //goto incB
+      C=0; x="incC"; continue start;  
+  //    console.log(A, B, C, D);
+
+case "incC": C=C+1;
+      if(C==17){x="incB"; continue start;} //goto incB
+      if(C==A||C==B){x="incC"; continue start;} //goto incC
+      D=34-A-B-C; 
+      if(D<1||D>16||D==A||D==B||D==C){x="incC"; continue start;} //goto incC
+ //     console.log(A, B, C, D);
+      E=0; x="incE"; continue start; //goto incE
+      
+case "incE": E=E+1;
+      if(E==17) {x="incC"; continue start;} //goto incC
+      if(E==A||E==B||E==C||E==D){x="incE"; continue start;} //goto incE
+      //console.log(A, B, C, D);
+      I=0; {x="inci"; continue start;};   
+
+case "inci": I=I+1;
+      if(I==17) {x="incE"; continue start;} //goto incE
+      if(I==A||I==B||I==C||I==D||I==E){x="inci"; continue start;} //goto inci  
+      M=34-A-I-E; 
+
+      if(M<1||M>16) {x="inci"; continue start;} //goto inci
+      if(M==A||M==B||M==C||M==D||M==E||M==I){x="inci"; continue start;} //goto inci
+      P=34-A-M-D;
+
+      if(P<1||P>16) {x="inci"; continue start;} //goto inci
+      if(P==A||P==B||P==C||P==D||P==E||P==I||P==M){x="inci"; continue start;} //goto inci
+      //console.log(A, B, C, D);
+      F=0; x="incF"; continue start; //goto incF 
+
+case "incF": F=F+1;
+      if(F==17) {x="inci"; continue start;} //goto incI
+      if(F==A||F==B||F==C||F==D||F==E||F==I||F==M||F==P){x="incF"; continue start;} //goto incF  
+      K=34-A-F-P;
+
+      if(K<1||K>16) {x="incF"; continue start;} //goto incF
+      if(K==A||K==B||K==C||K==D||K==E||K==I||K==M||K==P||K==F){x="incF"; continue start;} //goto incF
+     // console.log(A, B, C, D);
+      J=0; {x="incJ"; continue start;} //goto incJ
+
+case "incJ": J=J+1
+      if(J==17) {x="incF"; continue start;}
+      if(J==A||J==B||J==C||J==D||J==E||J==I||J==M||J==P||J==F||J==K){x="incJ"; continue start;} //goto incJ
+      G=34-D-J-M;
+
+      if(G<1||G>16||G==A||G==B||G==C||G==D||G==E||G==I||G==H||G==P||G==F||G==K||G==J){x="incJ"; continue start;} //goto incJ
+      if(J==17) {x="incF"; continue start;} //goto incF
+      H=34-G-F-E;
+
+      if(H<1||H>16){x="incJ"; continue start;} //goto incJ
+      if(H==A||H==B||H==C||H==D||H==E||H==I||H==M||H==P||H==F||H==K||H==J||H==G){x="incJ"; continue start;} //goto incJ
+      if(J==17) {x="incF"; continue start;} //goto incF
+      L=34-K-J-I;
+  
+      if(L<1||L>16){x="incJ"; continue start;} //goto incJ
+      if(L==A||L==B||L==C||L==D||L==E||L==I||L==M||L==P||L==F||L==K||L==J||L==G||L==H){x="incJ"; continue start;} //goto incJ
+      if(J==17) {x="incF"; continue start;} //goto incF
+      N=34-B-F-J;
+
+      if(N<1||N>16){x="incJ"; continue start;} //goto incJ
+      if(N==A||N==B||N==C||N==D||N==E||N==I||N==M||N==P||N==F||N==K||N==J||N==G||N==H||N==L){x="incJ"; continue start;} //goto incJ
+      if(J==17) {x="incF"; continue start;} //goto incF
+      O=34-C-G-K;
+
+      if(O<1||O>16){x="incJ"; continue start;} //goto incJ
+      if(O==A||O==B||O==C||O==D||O==E||O==I||O==M||O==P||O==F||O==K||O==J||O==G||O==H||O==L||O==N){x="incJ"; continue start;} //goto incJ
+     // console.log(A, B, C, D);
+     // console.log(E, F, G, H);
+     // console.log(I, J, K, L);
+     // console.log(M, N, O, P);
+    //  console.log("        ");
+      if(J==17) {x="incF"; continue start;} //goto incF
+      break;  
+     }
+cnt = cnt + 1;      
+console.log("Square# " + cnt);     
+console.log(A, B, C, D);
+console.log(E, F, G, H);
+console.log(I, J, K, L);
+console.log(M, N, O, P);
+}

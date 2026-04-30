@@ -1,0 +1,25 @@
+
+<html>
+
+<head>
+<style>
+div.title {position: fixed; top: 3px; left: 550px; width: 400px; <!-- border: 0px solid #73AD21; -->}
+div.note {position: fixed; top: 50px; left: 390px; width: 600px; <!-- border: 0px solid #73AD21; -->}
+div.cnt {position: fixed; top: 50px; left: 30px; width: 300px; <!-- border: 0px solid #73AD21; -->}
+</style>
+</head>
+
+<body onload="myFunction()">
+<div class="title"><h3>4x4 Magic Squares</h3></div>
+<div class="cnt"<h4>Square# = <span id="cnt"></span></h4></div>
+<div class="note"> (In addition to all rows, columns, and diagonals, the following pictures <br> 
+                   outlined in blue show additional collections of 4 numbers that add up to 34.)</div>
+
+</body>
+  <script>
+    function myFunction() {
+      var cnt = 123;
+      document.getElementById("cnt").innerHTML = cnt;
+    }
+  </script>
+</html>
